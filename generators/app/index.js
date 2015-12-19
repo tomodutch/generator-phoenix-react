@@ -84,6 +84,8 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath('web/static/js/app.js.tpl'),
       this.destinationPath('web/static/js/app.js')
     );
+
+    this.fs.delete(this.destinationPath('web/static/js/app.js.tpl'));
   },
   install: function () {
     this.installDependencies({
@@ -93,9 +95,7 @@ module.exports = yeoman.generators.Base.extend({
   },
   end: function () {
     this.log(yosay(
-      'I am all done!'
+      'I am all done! You can start the server with ' + chalk.yellow('npm start')
     ));
-
-    this.spawnCommand('npm', ['start']);
   }
 });
