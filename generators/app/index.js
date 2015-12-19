@@ -35,7 +35,6 @@ module.exports = yeoman.generators.Base.extend({
 
     var files = [
       'README.md',
-      '.gitignore',
       'mix.exs'
     ];
 
@@ -54,6 +53,11 @@ module.exports = yeoman.generators.Base.extend({
     this.copy(
       this.templatePath('lib/reactapp/endpoint.ex'),
       this.destinationPath('lib/' + this.appname + '.ex')
+    );
+
+    this.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore')
     );
   },
 
