@@ -1,19 +1,23 @@
 {
   "name": "generator-phoenix-react",
-  "version": "0.0.0",
-  "description": "A generator to create a phoenix application using React as view",
+  "version": "0.0.1",
+  "description": "Generate a Phoenix app with React and Webpack",
   "homepage": "https://github.com/TFarla/generator-phoenix-react",
   "author": {
     "name": "Thomas Farla",
     "email": "thomas@farla.io",
-    "url": ""
+    "url": "http://farla.io"
   },
   "files": [
     "generators"
   ],
   "main": "generators/index.js",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "phoenix",
+    "elixir",
+    "react",
+    "webpack"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
