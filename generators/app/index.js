@@ -2,35 +2,58 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var generators = require('yeoman-generator');
+var _ = require('lodash');
 
 module.exports = yeoman.generators.Base.extend({
-  prompting: function () {
-    var done = this.async();
+  constructor: function () {
+    generators.Base.apply(this, arguments);
 
-    // Have Yeoman greet the user.
+    this.argument('appname', {type: String, required: true});
+    this.moduleName = _.capitalize(_.camelCase(this.appname));
+  },
+
+  prompting: function () {
     this.log(yosay(
       'Welcome to the beautiful ' + chalk.red('generator-phoenix-react') + ' generator!'
     ));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
-      done();
-    }.bind(this));
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+    var directories = [
+      'test',
+      'web',
+      'config'
+    ];
+
+    _.forEach(directories, function (dir) {
+      this.directory(
+        this.templatePath(dir),
+        this.destinationPath(dir)
+      );
+    }.bind(this));
+
+    var files = [
+      'README.md',
+      '.gitignore',
+      'mix.exs'
+    ];
+
+    _.forEach(files, function (file) {
+      this.copy(
+        this.templatePath(file),
+        this.destinationPath(file)
+      );
+    }.bind(this));
+
+    this.copy(
+      this.templatePath('lib/reactapp/endpoint.ex'),
+      this.destinationPath('lib/' + this.appname + '/endpoint.ex')
+    );
+
+    this.copy(
+      this.templatePath('lib/reactapp/endpoint.ex'),
+      this.destinationPath('lib/' + this.appname + '.ex')
     );
   },
 
