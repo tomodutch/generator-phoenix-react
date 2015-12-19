@@ -6,7 +6,7 @@
 use Mix.Config
 
 # Configures the endpoint
-config :<%= appname %>, <%= moduleName %>.Endpoint,
+config :<%= atomName %>, <%= moduleName %>.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "8QMUCGkMq6L2ZJaYx2hbYKgSvyyyrEM/r6kEiG5eqysxt+RkDrHU/KHQfYeJdAwa",

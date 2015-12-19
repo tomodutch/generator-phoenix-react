@@ -8,18 +8,32 @@ var _ = require('lodash');
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     generators.Base.apply(this, arguments);
-
-    this.argument('appname', {type: String, required: true});
-    this.moduleName = _.capitalize(_.camelCase(this.appname));
+    this.argument('modulename', {type: String, required: false});
   },
 
   prompting: function () {
     this.log(yosay(
       'Welcome to the beautiful ' + chalk.red('generator-phoenix-react') + ' generator!'
     ));
+
+    if (!this.modulename) {
+      var done = this.async();
+      this.prompt({
+        type: 'input',
+        name: 'modulename',
+        message: 'Your module name',
+        default: this.appname
+      }, function (answers) {
+        this.modulename = answers.name;
+        done();
+      }.bind(this));
+    }
   },
 
   writing: function () {
+    this.moduleName = _.capitalize(_.camelCase(this.modulename));
+    this.atomName = _.snakeCase(this.moduleName);
+
     var directories = [
       'test',
       'web',
@@ -48,12 +62,12 @@ module.exports = yeoman.generators.Base.extend({
 
     this.copy(
       this.templatePath('lib/reactapp/endpoint.ex'),
-      this.destinationPath('lib/' + this.appname + '/endpoint.ex')
+      this.destinationPath('lib/' + this.atomName + '/endpoint.ex')
     );
 
     this.copy(
       this.templatePath('lib/reactapp.ex'),
-      this.destinationPath('lib/' + this.appname + '.ex')
+      this.destinationPath('lib/' + this.atomName + '.ex')
     );
 
     this.copy(
@@ -77,9 +91,9 @@ module.exports = yeoman.generators.Base.extend({
       npm: true
     });
   },
-  end: function() {
+  end: function () {
     this.log(yosay(
-      'I am all done! run the server with the command ' + chalk.yellow('mix deps.get && mix phoenix.server')
+      'I am all done! run the server with ' + chalk.yellow('mix deps.get && mix phoenix.server')
     ));
   }
 });
