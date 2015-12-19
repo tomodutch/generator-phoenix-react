@@ -93,7 +93,9 @@ module.exports = yeoman.generators.Base.extend({
   },
   end: function () {
     this.log(yosay(
-      'I am all done! run the server with ' + chalk.yellow('mix deps.get && mix phoenix.server')
+      'I am all done!'
     ));
+
+    this.spawnCommand('npm', ['start']);
   }
 });

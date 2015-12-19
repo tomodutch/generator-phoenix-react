@@ -1,6 +1,7 @@
 {
   "repository": {},
   "scripts": {
+    "start": "mix deps.get && mix phoenix.server",
     "build": "webpack -p"
   },
   "dependencies": {
@@ -14,6 +15,12 @@
     "babel-core": "^6.3.21",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
+    "copy-webpack-plugin": "^0.3.3",
+    "css-loader": "^0.23.0",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
     "webpack": "^1.12.9"
   }
 }
