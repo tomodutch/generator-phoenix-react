@@ -35,7 +35,8 @@ module.exports = yeoman.generators.Base.extend({
 
     var files = [
       'README.md',
-      'mix.exs'
+      'mix.exs',
+      'package.json'
     ];
 
     _.forEach(files, function (file) {
@@ -51,7 +52,7 @@ module.exports = yeoman.generators.Base.extend({
     );
 
     this.copy(
-      this.templatePath('lib/reactapp/endpoint.ex'),
+      this.templatePath('lib/reactapp.ex'),
       this.destinationPath('lib/' + this.appname + '.ex')
     );
 
@@ -59,9 +60,26 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath('gitignore'),
       this.destinationPath('.gitignore')
     );
-  },
 
+    this.copy(
+      this.templatePath('webpack.config.js.tpl'),
+      this.destinationPath('webpack.config.js')
+    );
+
+    this.copy(
+      this.templatePath('web/static/js/app.js.tpl'),
+      this.destinationPath('web/static/js/app.js')
+    );
+  },
   install: function () {
-    this.installDependencies();
+    this.installDependencies({
+      bower: false,
+      npm: true
+    });
+  },
+  end: function() {
+    this.log(yosay(
+      'I am all done! run the server with the command ' + chalk.yellow('mix deps.get && mix phoenix.server')
+    ));
   }
 });

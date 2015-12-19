@@ -14,7 +14,9 @@ describe('generator-phoenix-react:app', function () {
     assert.file([
       '.gitignore',
       'README.md',
-      'test/test_helper.exs'
+      'test/test_helper.exs',
+      'webpack.config.js',
+      'web/static/js/app.js'
     ]);
   });
 
@@ -43,7 +45,8 @@ describe('generator-phoenix-react:app', function () {
       ['web/views/page_view.ex', moduleRegex],
       ['web/gettext.ex', moduleRegex],
       ['web/router.ex', moduleRegex],
-      ['web/web.ex', moduleRegex]
+      ['web/web.ex', moduleRegex],
+      ['package.json', /react/]
     ]);
   });
 });
