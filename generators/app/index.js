@@ -8,7 +8,7 @@ var _ = require('lodash');
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     generators.Base.apply(this, arguments);
-    this.argument('appname', {type: String, required: false});
+    this.argument('appname', {type: String, required: true});
 
     this.moduleName = _.capitalize(_.camelCase(this.appname));
     this.atomName = _.snakeCase(this.appname);
