@@ -8,32 +8,19 @@ var _ = require('lodash');
 module.exports = yeoman.generators.Base.extend({
   constructor: function () {
     generators.Base.apply(this, arguments);
-    this.argument('modulename', {type: String, required: false});
+    this.argument('appname', {type: String, required: false});
+
+    this.moduleName = _.capitalize(_.camelCase(this.appname));
+    this.atomName = _.snakeCase(this.appname);
   },
 
   prompting: function () {
     this.log(yosay(
       'Welcome to the beautiful ' + chalk.red('generator-phoenix-react') + ' generator!'
     ));
-
-    if (!this.modulename) {
-      var done = this.async();
-      this.prompt({
-        type: 'input',
-        name: 'modulename',
-        message: 'Your module name',
-        default: this.appname
-      }, function (answers) {
-        this.modulename = answers.name;
-        done();
-      }.bind(this));
-    }
   },
 
   writing: function () {
-    this.moduleName = _.capitalize(_.camelCase(this.modulename));
-    this.atomName = _.snakeCase(this.moduleName);
-
     var directories = [
       'test',
       'web',

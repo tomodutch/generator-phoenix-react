@@ -1,7 +1,7 @@
 {
   "name": "generator-phoenix-react",
-  "version": "0.0.1",
-  "description": "Generate a Phoenix app with React and Webpack",
+  "version": "0.0.2",
+  "description": "Generate a Phoenix 1.1 app with React and Webpack",
   "homepage": "https://github.com/TFarla/generator-phoenix-react",
   "author": {
     "name": "Thomas Farla",
@@ -26,15 +26,16 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
-    "yeoman-assert": "^2.0.0",
+    "chai": "^3.4.1",
     "gulp": "^3.6.0",
+    "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.9.0",
     "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^1.0.0",
     "gulp-nsp": "^2.1.0",
-    "gulp-coveralls": "^0.1.0"
+    "gulp-plumber": "^1.0.0",
+    "yeoman-assert": "^2.0.0"
   },
   "repository": "TFarla/generator-phoenix-react",
   "scripts": {
