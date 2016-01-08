@@ -68,8 +68,33 @@ module.exports = yeoman.generators.Base.extend({
     );
 
     this.copy(
+      this.templatePath('karma.conf.js.tpl'),
+      this.destinationPath('karma.conf.js')
+    );
+
+    this.copy(
+      this.templatePath('tests.bundle.js.tpl'),
+      this.destinationPath('tests.bundle.js')
+    );
+
+    this.copy(
       this.templatePath('web/static/js/app.js.tpl'),
       this.destinationPath('web/static/js/app.js')
+    );
+
+    this.copy(
+      this.templatePath('web/static/js/components/app.js.tpl'),
+      this.destinationPath('web/static/js/components/app.js')
+    );
+
+    this.copy(
+      this.templatePath('test/static/js/app.spec.js.tpl'),
+      this.destinationPath('test/static/js/app.spec.js')
+    );
+
+    this.copy(
+      this.templatePath('test/static/js/helpers.js.tpl'),
+      this.destinationPath('test/static/js/helpers.js')
     );
 
     this.fs.delete(this.destinationPath('web/static/js/app.js.tpl'));

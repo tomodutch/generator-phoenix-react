@@ -15,7 +15,9 @@ module.exports = {
   resolve: {
     alias: {
       phoenix_html: __dirname + '/deps/phoenix_html/web/static/js/phoenix_html',
-      phoenix: __dirname + "/deps/phoenix/web/static/js/phoenix.js"
+      phoenix: __dirname + "/deps/phoenix/web/static/js/phoenix.js",
+      test_helpers: __dirname + "/test/static/js/helpers.js",
+      <%= atomName %>: __dirname + "/web/static/js"
     }
   },
 

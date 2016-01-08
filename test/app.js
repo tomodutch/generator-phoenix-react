@@ -41,8 +41,14 @@ describe('generator-phoenix-react:app', function () {
         '.gitignore',
         'README.md',
         'test/test_helper.exs',
+        'test/static/static_test.exs',
         'webpack.config.js',
-        'web/static/js/app.js'
+        'web/static/js/app.js',
+        'web/static/js/components/app.js',
+        'karma.conf.js',
+        'tests.bundle.js',
+        'test/static/js/app.spec.js',
+        'test/static/js/helpers.js'
       ]);
     });
 
