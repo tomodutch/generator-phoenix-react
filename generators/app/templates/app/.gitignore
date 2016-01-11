@@ -4,6 +4,8 @@
 /deps
 /*.ez
 
+node_modules
+
 # Generate on crash by the VM
 erl_crash.dump
 

@@ -21,83 +21,19 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-    var directories = [
-      'test',
-      'web',
-      'config'
-    ];
+    this.directory(
+      this.templatePath('app'),
+      this.destinationPath()
+    );
 
-    _.forEach(directories, function (dir) {
-      this.directory(
-        this.templatePath(dir),
-        this.destinationPath(dir)
-      );
-    }.bind(this));
-
-    var files = [
-      'README.md',
-      'mix.exs',
-      'package.json'
-    ];
-
+    var files = ['lib/reactapp/endpoint.ex', 'lib/reactapp.ex'];
     _.forEach(files, function (file) {
+      var destination = file.replace('reactapp', this.atomName);
       this.copy(
         this.templatePath(file),
-        this.destinationPath(file)
+        this.destinationPath(destination)
       );
     }.bind(this));
-
-    this.copy(
-      this.templatePath('lib/reactapp/endpoint.ex'),
-      this.destinationPath('lib/' + this.atomName + '/endpoint.ex')
-    );
-
-    this.copy(
-      this.templatePath('lib/reactapp.ex'),
-      this.destinationPath('lib/' + this.atomName + '.ex')
-    );
-
-    this.copy(
-      this.templatePath('gitignore'),
-      this.destinationPath('.gitignore')
-    );
-
-    this.copy(
-      this.templatePath('webpack.config.js.tpl'),
-      this.destinationPath('webpack.config.js')
-    );
-
-    this.copy(
-      this.templatePath('karma.conf.js.tpl'),
-      this.destinationPath('karma.conf.js')
-    );
-
-    this.copy(
-      this.templatePath('tests.bundle.js.tpl'),
-      this.destinationPath('tests.bundle.js')
-    );
-
-    this.copy(
-      this.templatePath('web/static/js/app.js.tpl'),
-      this.destinationPath('web/static/js/app.js')
-    );
-
-    this.copy(
-      this.templatePath('web/static/js/components/app.js.tpl'),
-      this.destinationPath('web/static/js/components/app.js')
-    );
-
-    this.copy(
-      this.templatePath('test/static/js/app.spec.js.tpl'),
-      this.destinationPath('test/static/js/app.spec.js')
-    );
-
-    this.copy(
-      this.templatePath('test/static/js/helpers.js.tpl'),
-      this.destinationPath('test/static/js/helpers.js')
-    );
-
-    this.fs.delete(this.destinationPath('web/static/js/app.js.tpl'));
   },
   install: function () {
     this.installDependencies({

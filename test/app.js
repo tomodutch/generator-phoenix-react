@@ -52,10 +52,6 @@ describe('generator-phoenix-react:app', function () {
       ]);
     });
 
-    it('should delete app.tpl', function () {
-      assert.noFile('web/static/js/app.js.tpl');
-    });
-
     it('should create files with the correct module', function () {
       var moduleRegex = /defmodule AppName\./;
       var configRegex = /config \:app\_name\, AppName\.Endpoint/;

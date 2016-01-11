@@ -8,9 +8,19 @@ var istanbul = require('gulp-istanbul');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 var coveralls = require('gulp-coveralls');
+var excludedFiles = [
+  '!generators/app/templates/app/karma.conf.js',
+  '!generators/app/templates/app/tests.bundle.js',
+  '!generators/app/templates/app/webpack.config.js',
+  '!generators/app/templates/app/test/static/js/app.spec.js',
+  '!generators/app/templates/app/test/static/js/helpers.js',
+  '!generators/app/templates/app/web/static/js/app.js',
+  '!generators/app/templates/app/web/static/js/components/app.js'
+];
 
 gulp.task('static', function () {
-  return gulp.src('**/*.js')
+  var files = ['**/*.js'].concat(excludedFiles);
+  return gulp.src(files)
     .pipe(excludeGitignore())
     .pipe(eslint())
     .pipe(eslint.format())
@@ -22,7 +32,8 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-  return gulp.src('generators/**/*.js')
+  var files = ['generators/**/*.js'].concat(excludedFiles);
+  return gulp.src(files)
     .pipe(istanbul({
       includeUntested: true
     }))
