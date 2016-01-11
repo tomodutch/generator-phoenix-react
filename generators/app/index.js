@@ -26,7 +26,11 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath()
     );
 
-    var files = ['lib/reactapp/endpoint.ex', 'lib/reactapp.ex'];
+    var files = [
+      'lib/reactapp/endpoint.ex',
+      'lib/reactapp.ex'
+    ];
+
     _.forEach(files, function (file) {
       var destination = file.replace('reactapp', this.atomName);
       this.copy(
@@ -34,6 +38,11 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath(destination)
       );
     }.bind(this));
+
+    this.copy(
+      this.templatePath('gitignore'),
+      this.destinationPath('.gitignore')
+    );
   },
   install: function () {
     this.installDependencies({
