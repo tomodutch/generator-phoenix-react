@@ -30,10 +30,11 @@ Tests can be divided into three groups.
 Make sure to have a web driver running.
 
 ```bash
-# Make sure to have a web driver running for the E2E tests
-node ./node_modules/.bin/phantomjs --wd # default configured for hound
+# Run the entire test suite
+bin/test
 
-# Run the entire suite including unit tests for react
+# OR start the web driver manually and run the suite
+node ./node_modules/.bin/phantomjs --wd # default configured for hound
 mix test
 
 # Run the tests for react components only

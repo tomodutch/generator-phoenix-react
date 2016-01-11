@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2016-01-10
+## Added
+- Bash script `bin/test` to automatically start web driver and test
+
 ## [0.2.0] - 2016-01-10
 ### Added
 - E2E testing
