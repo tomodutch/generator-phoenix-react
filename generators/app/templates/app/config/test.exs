@@ -4,7 +4,11 @@ use Mix.Config
 # you can enable the server option below.
 config :<%= atomName %>, <%= moduleName %>.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Available web drivers can be found on:
+# https://github.com/HashNuke/hound/blob/master/notes/configuring-hound.md
+config :hound, driver: "phantomjs"
