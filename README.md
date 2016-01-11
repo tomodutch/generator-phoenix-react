@@ -1,6 +1,11 @@
 # generator-phoenix-react [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > A generator to create a phoenix application using React as view
 
+## Features
+- End to end testing with [hound](https://github.com/HashNuke/hound)
+- Unit Testing with [Karma](http://karma-runner.github.io), [mocha](https://mochajs.org/) and [chai](http://chaijs.com/)
+- Ecmascript 2015
+
 ## Installation
 First, install [Yeoman](http://yeoman.io) and generator-phoenix-react using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
@@ -15,20 +20,38 @@ Then generate your new project:
 yo phoenix-react <my-project-name>
 ```
 
-## Running tests
+## Testing
+Tests can be divided into three groups.
+1. React unit tests
+2. Phoenix unit tests
+3. Phoenix E2E tests
+
+### Running tests
+Make sure to have a web driver running.
 
 ```bash
+# Make sure to have a web driver running for the E2E tests
+node ./node_modules/.bin/phantomjs --wd # default configured for hound
+
+# Run the entire suite including unit tests for react
+mix test
+
+# Run the tests for react components only
 npm test
 # or
 npm run-script test:watch # for TDD
 ```
 
-## Create a test
-1. Create a new file `test/static/js/<component-name>.spec.js`
-2. Import React
-3. run `npm test`
+### Use a different web driver for E2E testing
 
-## Test example
+```elixir
+# config/test.exs
+# Replace this line with a different configuration that can be found at
+# https://github.com/HashNuke/hound/blob/master/notes/configuring-hound.md
+config :hound, driver: "phantomjs"
+```
+
+### React component test example
 
 ```javascript
 // test/static/js/app.spec.js
@@ -49,12 +72,6 @@ describe('App', () => {
   });
 });
 ```
-
-## Test specs
-Frameworks:
-- [Karma](http://karma-runner.github.io/0.13/index.html)
-- [Mocha](https://mochajs.org/)
-- [Chai](http://chaijs.com/)
 
 ## Getting To Know Yeoman
 Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced. Feel free to [learn more about him](http://yeoman.io/).
