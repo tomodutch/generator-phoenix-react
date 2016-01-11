@@ -70,7 +70,7 @@ describe('generator-phoenix-react:app', function () {
         ['test/views/error_view_test.exs', /AppName/],
         ['test/views/layout_view_test.exs', /AppName/],
         ['test/views/page_view_test.exs', /AppName/],
-        ['test/E2E/index_test.exs', /AppName/],
+        ['test/feature/index_test.exs', /AppName/],
         ['web/channels/user_socket.ex', moduleRegex],
         ['web/controllers/page_controller.ex', moduleRegex],
         ['web/views/error_helpers.ex', moduleRegex],
