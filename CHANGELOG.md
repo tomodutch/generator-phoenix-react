@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2016-01-10
+### Added
+- E2E testing
+
+## Fixed
+- Leaving behind .tpl files in the generated project
+
 ## [0.1.0] - 2016-01-08
 ### Added
 - Testing
