@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default () => (
-  <div>
+  <div className='app'>
     <div className="jumbotron">
       <h2>Welcome to Phoenix React!</h2>
       <p className="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>

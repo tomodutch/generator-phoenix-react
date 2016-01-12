@@ -2,8 +2,8 @@
   "repository": {},
   "scripts": {
     "start": "mix deps.get && mix phoenix.server",
-    "build": "webpack -p",
-    "postinstall": "npm build",
+    "build": "./node_modules/.bin/webpack -p",
+    "postinstall": "npm run-script build",
     "test": "./node_modules/.bin/karma start --single-run",
     "test:watch": "./node_modules/.bin/karma start"
   },

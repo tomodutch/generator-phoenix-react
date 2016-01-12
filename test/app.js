@@ -79,7 +79,8 @@ describe('generator-phoenix-react:app', function () {
         ['web/gettext.ex', moduleRegex],
         ['web/router.ex', moduleRegex],
         ['web/web.ex', moduleRegex],
-        ['package.json', /react/]
+        ['package.json', /react/],
+        ['lib/retryer.ex', moduleRegex]
       ]);
     });
   });

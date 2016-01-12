@@ -33,14 +33,18 @@ Make sure to have a web driver running.
 # Run the entire test suite
 bin/test
 
-# OR start the web driver manually and run the suite
-node ./node_modules/.bin/phantomjs --wd # default configured for hound
-mix test
+# OR start the web driver manually and run the entire suite
+# Make sure to start the web driver
+chromedriver # default configured for hound
+npm run-script build && mix test --include feature
 
 # Run the tests for react components only
 npm test
 # or
 npm run-script test:watch # for TDD
+
+# Run the elixir unit tests only (Fastest)
+mix test --exclude feature --exclude integration
 ```
 
 ### Use a different web driver for E2E testing
@@ -51,6 +55,8 @@ npm run-script test:watch # for TDD
 # https://github.com/HashNuke/hound/blob/master/notes/configuring-hound.md
 config :hound, driver: "phantomjs"
 ```
+
+**NOTE:** Make sure to change `bin/test` to start this web driver instead.
 
 ### React component test example
 

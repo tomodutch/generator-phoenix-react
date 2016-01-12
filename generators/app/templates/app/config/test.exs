@@ -11,4 +11,4 @@ config :logger, level: :warn
 
 # Available web drivers can be found on:
 # https://github.com/HashNuke/hound/blob/master/notes/configuring-hound.md
-config :hound, driver: "phantomjs"
+config :hound, driver: "chrome_driver"

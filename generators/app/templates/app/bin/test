@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
-node ./node_modules/.bin/phantomjs --wd > /dev/null &
+# Make sure chromedriver is installed
+# To use a different driver go to
+# https://github.com/HashNuke/hound/blob/master/notes/configuring-hound.md
+chromedriver > /dev/null &
 pid=$!
 trap "kill $pid" INT TERM EXIT
-mix test --include feature
+mix deps.get
+npm run-script build && mix test --include feature
