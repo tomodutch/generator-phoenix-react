@@ -61,21 +61,33 @@ config :hound, driver: "phantomjs"
 ### React component test example
 
 ```javascript
-// test/static/js/app.spec.js
+// test/static/js/components/form.spec.js
 import React from 'react';
-import {expect} from 'chai';
+import Chai, {expect} from 'chai';
+import sinon from 'sinon';
+import {mount} from 'enzyme';
+import sinonChai from 'sinon-chai';
 /**
-* <my-project> is replaced by your project name which can be found under "resolve.alias" in
-* webpack.config.js in the root of this project
-*/
-import App from '<my_project>/components/app';
-import {render} from 'test_helpers';
+* <my-project> is replaced by your project name
+* which can be found under "resolve.alias" in webpack.config.js
+**/
+import Form from '<my_project>/components/form';
+Chai.use(sinonChai);
 
+describe('Form', () => {
+  it('submits a message', () => {
+    const handleSubmit = sinon.spy();
+    const wrapper = mount(
+      <Form handleSubmit={handleSubmit} />
+    );
+    const message = 'Hello, my name is Bob!';
+    const {node} = wrapper.find('input');
 
-describe('App', () => {
-  it ('renders html', () => {
-    let output = render(<App />);
-    expect(output.props.children).to.have.length.above(0);
+    node.value = message;
+    wrapper.find('form').simulate('submit');
+
+    expect(handleSubmit).to.have.been.calledWith(message);
+    expect(node.value).to.equal('');
   });
 });
 ```
