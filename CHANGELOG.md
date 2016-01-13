@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2016-01-13
+## Added
+- [Enzyme](http://airbnb.io/enzyme/) & [sinon](http://sinonjs.org/) for a better testing experience
+- A sample Form structure and a test
+- Add a sample end to end tests for the form
+
+## Removed
+- The Retryer library in favor of directly using the Hound API concerning retries
+
 ## [0.2.2] - 2016-01-11
 ## Added
 - A workaround to make sure an element is visible before continuing in end to end tests

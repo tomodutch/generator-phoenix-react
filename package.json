@@ -1,6 +1,6 @@
 {
   "name": "generator-phoenix-react",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Generate a Phoenix 1.1 app with React and Webpack",
   "homepage": "https://github.com/TFarla/generator-phoenix-react",
   "author": {
