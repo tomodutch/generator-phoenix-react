@@ -12,10 +12,12 @@ var excludedFiles = [
   '!generators/app/templates/app/karma.conf.js',
   '!generators/app/templates/app/tests.bundle.js',
   '!generators/app/templates/app/webpack.config.js',
-  '!generators/app/templates/app/test/static/js/app.spec.js',
+  '!generators/app/templates/app/test/static/js/components/app.spec.js',
+  '!generators/app/templates/app/test/static/js/components/form.spec.js',
   '!generators/app/templates/app/test/static/js/helpers.js',
   '!generators/app/templates/app/web/static/js/app.js',
-  '!generators/app/templates/app/web/static/js/components/app.js'
+  '!generators/app/templates/app/web/static/js/components/app.js',
+  '!generators/app/templates/app/web/static/js/components/form.js'
 ];
 
 gulp.task('static', function () {

@@ -1,10 +1,24 @@
 import React from 'react';
+import Form from './form';
 
 export default () => (
   <div className='app'>
     <div className="jumbotron">
       <h2>Welcome to Phoenix React!</h2>
       <p className="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+    </div>
+
+    <div className="row">
+      <div className="col-md-12">
+        A form to get started
+
+        <Form handleSubmit={
+            message => {
+              alert(message);
+            }
+          }
+        />
+      </div>
     </div>
 
     <div className="row marketing">

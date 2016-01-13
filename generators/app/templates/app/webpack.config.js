@@ -16,7 +16,7 @@ module.exports = {
     alias: {
       phoenix_html: __dirname + '/deps/phoenix_html/web/static/js/phoenix_html',
       phoenix: __dirname + "/deps/phoenix/web/static/js/phoenix.js",
-      test_helpers: __dirname + "/test/static/js/helpers.js",
+      sinon: __dirname + '/node_modules/sinon/pkg/sinon',
       <%= atomName %>: __dirname + "/web/static/js"
     }
   },
@@ -24,16 +24,22 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /sinon\.js$/,
+        loader: 'imports?define=>false,require=>false'
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel",
         query: {
           presets: ['es2015', 'react']
         }
-      }, {
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style", "css")
-      }, {
+      },
+      {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
           "style",
@@ -50,5 +56,13 @@ module.exports = {
       { from: "./deps/phoenix_html/web/static/js/phoenix_html.js",
         to: "js/phoenix_html.js" }
     ])
-  ]
+  ],
+
+  externals: {
+    "jsdom": "window",
+    "cheerio": "window",
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': 'window',
+    'text-encoding': 'window'
+  },
 }

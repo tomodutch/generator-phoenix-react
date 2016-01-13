@@ -7,9 +7,18 @@ defmodule <%= moduleName %>.FeatureIndexTest do
   @tag :feature
   test "should get page title" do
     navigate_to("/")
-    element = {:class, "app"}
-    # Wait until React is done loading
-    <%= moduleName%>.Retryer.element_visible?(element)
     assert "Hello from React!" == page_title
+  end
+
+  @tag :feature
+  test "submit form" do
+    navigate_to("/")
+    message = "Hi!"
+
+    elm = find_element(:name, "message")
+    elm |> fill_field(message)
+    elm |> submit_element
+
+    assert message == dialog_text()
   end
 end

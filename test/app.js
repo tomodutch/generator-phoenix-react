@@ -47,7 +47,8 @@ describe('generator-phoenix-react:app', function () {
         'web/static/js/components/app.js',
         'karma.conf.js',
         'tests.bundle.js',
-        'test/static/js/app.spec.js',
+        'test/static/js/components/app.spec.js',
+        'test/static/js/components/form.spec.js',
         'test/static/js/helpers.js'
       ]);
     });
@@ -79,8 +80,7 @@ describe('generator-phoenix-react:app', function () {
         ['web/gettext.ex', moduleRegex],
         ['web/router.ex', moduleRegex],
         ['web/web.ex', moduleRegex],
-        ['package.json', /react/],
-        ['lib/retryer.ex', moduleRegex]
+        ['package.json', /react/]
       ]);
     });
   });
