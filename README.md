@@ -1,6 +1,9 @@
 # generator-phoenix-react [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > A generator to create a phoenix application using React as view
 
+# Deperated
+This repository is not being maintained
+
 ## Features
 - End to end testing with [hound](https://github.com/HashNuke/hound)
 - Unit Testing with [Karma](http://karma-runner.github.io), [mocha](https://mochajs.org/) and [chai](http://chaijs.com/)
